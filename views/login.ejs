@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Basic Login: Login</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <style>
+            .formElement {
+                margin-bottom:1%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Welcome back.</h1>
+        <p>Please login.</p>
+
+        <!-- Form to collect login info. On submission, this information will be passed into index.js and validated against the existing password to allow for login. Whatever is used for the "name" attribute is what will also be used when parsing the data in index.js. -->
+        <form action="/welcome" method="post">
+            <div class="formElement">
+                <label for="username">Username: </label>
+                <input type="text" name="username" id="username">
+            </div>
+
+            <div class="formElement">
+                <label for="password">Password: </label>
+                <input type="password" name="password" id="password">
+            </div>
+
+            <input type="submit" name="submit" id="submit" value="Submit">
+
+        </form>
+    </body>
+
+</html>

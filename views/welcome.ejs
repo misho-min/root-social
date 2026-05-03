@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Root Social</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+    </head>
+
+    <body>
+        <!-- Uses EJS syntax to populate the user's name with the data passed from index.js. -->
+        <h2>Root Social</h2>
+        <h1>Hi, <%= user.name %>!</h1>
+        <h3>Make your daily post below</h3>
+
+        <!-- Form for posts. Note the hidden inputs that keep track of the current username and password so that they can be passed back to index.js. -->
+        <form action="/welcome" method="post" enctype="multipart/form-data">
+
+            <textarea name="post" id="post"></textarea>
+            
+            <input type="file" class="form-control-file" name="uploaded_file" accept=".jpg,.jpeg,.png">
+
+            <input type="hidden" name="username" id="username" value="<%= user.username %>">
+            <input type="hidden" name="password" id="password" value="<%= user.password %>">
+            <input type="submit" name="Post" id="submit" value="Submit">
+        </form>
+
+        <h2>Roots</h2>
+
+        <h3>Today's Date: <%= new Date().toLocaleDateString() %></h3>
+
+        <h3>Where were you on <%= randomDate.toLocaleDateString() %>?</h3>
+
+        <div id="pastPosts">
+        <% posts.forEach(post => { %>
+            <div>
+                <p><b><%= post.author %> | <%= randomDate.toLocaleDateString() %></b><br><%= post.text %></p>
+                <% if (post.image) { %>
+                    <img src="/uploads/<%= post.image %>" style="max-width: 300px;">
+                <% } %>
+                <p> Posted on <%= new Date(post.createdAt).toLocaleDateString() %></p>
+                <hr>
+            </div>
+        <% }) %>
+        </div>
+
+        <a href="/"><button>Logout</button></a>
+        
+        <script>
+            // Parse the posts as JSON array
+            let userPosts = <%- JSON.stringify(posts ? posts.post : []) %>;
+            userPosts = JSON.parse(userPosts);
+            let htmlToAdd = '';
+
+            
+            for (let i = userPosts.length - 1; i >= 0; i--) {
+                let post = userPosts[i];
+                if (typeof post === 'string') {
+                    // Old post format
+                    htmlToAdd += '<p>' + post.replace(/"/g, '') + '</p><hr>';
+                } else {
+                    // New post format
+                    htmlToAdd += '<p><b>' + post.author + '</b><br> ' + post.text + '</p>';
+                    if (post.image) {
+                        htmlToAdd += '<img src="/uploads/' + post.image + '" style="max-width: 300px;"><br>';
+                    }
+                    htmlToAdd += '<hr>';
+                }
+            }
+            document.getElementById('pastPosts').innerHTML = htmlToAdd;
+        </script>
+
+    </body>
+</html>
