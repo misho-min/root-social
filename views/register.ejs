@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Basic Login: Register</title>
+        <title>Sign Up</title>
         <link rel="stylesheet" type="text/css" href="css/styles.css" />
         <style>
             .formElement {
@@ -11,31 +11,31 @@
     </head>
 
     <body>
-        <h1>Register for this site.</h1>
+        <h1>Sign Up For Root</h1>
 
         <!-- Form to collect registration info. On submission, this information will be passed into index.js and saved into the database. Whatever is used for the "name" attribute is what will also be used when parsing the data in index.js. -->
-        <form action="/welcome" method="post">
+        <form class="formTextBoxes" action="/welcome" method="post">
             <div class="formElement">
                 <label for="username">Username: </label>
-                <input type="text" name="username" id="username">
+                <input class = "texBox" type="text" name="username" id="username">
             </div>
 
             <div class="formElement">
                 <label for="password">Password: </label>
-                <input type="password" name="password" id="password">
+                <input class = "texBox" type="password" name="password" id="password">
             </div>
 
             <div class="formElement">
                 <label for="name">Name: </label>
-                <input type="text" name="name" id="name">
+                <input class = "texBox" type="text" name="name" id="name">
             </div>
 
             <div class="formElement">
                 <label for="birthday">Date of birth: </label>
-                <input type="date" name="birthday" id="birthday">
+                <input class = "texBox" type="date" name="birthday" id="birthday">
             </div>
 
-            <input type="submit" name="submit" id="submit" value="Submit">
+            <input class = "button" type="submit" name="submit" id="submit" value="Submit">
 
         </form>
     </body>

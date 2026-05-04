@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Root Social</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />
     </head>
 
     <body>
@@ -14,13 +14,15 @@
         <!-- Form for posts. Note the hidden inputs that keep track of the current username and password so that they can be passed back to index.js. -->
         <form action="/welcome" method="post" enctype="multipart/form-data">
 
-            <textarea name="post" id="post"></textarea>
-            
-            <input type="file" class="form-control-file" name="uploaded_file" accept=".jpg,.jpeg,.png">
+            <!-- <textarea class = "texBox" name="post" id="post"></textarea> -->
+            <input class = "postBox" type="text" name="post" id="post">
+
+            <label for="file-upload" class="form-control-file">Select Image</label>
+            <input type="file" class="form-control-file" name="uploaded_file" id="file-upload" accept=".jpg,.jpeg,.png" value="Select Image">
 
             <input type="hidden" name="username" id="username" value="<%= user.username %>">
             <input type="hidden" name="password" id="password" value="<%= user.password %>">
-            <input type="submit" name="Post" id="submit" value="Submit">
+            <input class = "button" type="submit" name="Post" id="submit" value="Post">
         </form>
 
         <h2>Roots</h2>

@@ -13,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const { DatabaseSync } = require('node:sqlite');
 const db = new DatabaseSync('/data/database.db', { readonly: false });
+// const db = new DatabaseSync('database.db', { readonly: false });
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS users (
